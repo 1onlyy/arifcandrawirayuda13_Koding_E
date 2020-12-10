@@ -16,8 +16,8 @@ class CreateModalsTable extends Migration
         Schema::create('modals', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama');
-            $table->float('harga');
-            $table->float('uang');
+            $table->string('harga');
+            $table->string('uang');
             $table->timestamps();
         });
     }

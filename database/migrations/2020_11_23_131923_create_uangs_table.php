@@ -15,9 +15,9 @@ class CreateUangsTable extends Migration
     {
         Schema::create('uangs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('untung');
-            $table->integer('modal');
-            $table->integer('pulang');
+            $table->string('untung');
+            $table->string('modal');
+            $table->string('pulang');
             $table->timestamps();
         });
     }

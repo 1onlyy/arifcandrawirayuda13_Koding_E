@@ -16,7 +16,7 @@ class CreateAmbiluangsTable extends Migration
         Schema::create('ambiluangs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama');
-            $table->float('harga');
+            $table->string('harga');
             $table->string('jenis');
             $table->timestamps();
         });
