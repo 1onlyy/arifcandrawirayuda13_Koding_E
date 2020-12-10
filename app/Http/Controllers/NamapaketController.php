@@ -172,7 +172,7 @@ class NamapaketController extends Controller
             'uang' => $uanguser,
             'harga' =>  $usermodal,
         ]);
-
+        $request->session()->put('status', 'selesai');
         return redirect('/terjual');
     }
 
@@ -236,5 +236,7 @@ class NamapaketController extends Controller
     public function destroy(Namapaket $namapaket)
     {
         //
+        Namapaket::destroy($namapaket->id);
+        return redirect('/terjual');
     }
 }

@@ -31,6 +31,18 @@
             </tr>
             <tr>
             <td width="40%">
+                <label @error('uang') class="text-danger" @enderror>Uang @error('uang')
+                  {{$message}} @enderror</label>
+              </td>
+            <td width="60%"><select value="" class="form-control @error('uang') is-invalid @enderror" id="uang" placeholder="masukan uang" name="uang">
+                  @foreach($data as $row)
+                  <option value="{{$row->nama}}">{{$row->nama}}</option>
+                  @endforeach
+                </select></td>
+              <td>
+            </tr>
+            <tr>
+            <td width="40%">
                 <label @error('jenis') class="text-danger" @enderror>Jenis @error('Jenis')
                   {{$message}} @enderror</label>
               </td>

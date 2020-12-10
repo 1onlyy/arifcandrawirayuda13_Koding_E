@@ -50,6 +50,7 @@ class AmbiluangController extends Controller
         //
         $validatedData = $request->validate([
             'nama' => 'required',
+            'uang' => 'required',
             'jenis' => 'required',
             'harga' => 'integer|min:1',
         ]);
@@ -61,13 +62,20 @@ class AmbiluangController extends Controller
                     ->where('nama', $request->nama)
                     ->get();
 
-         foreach($data[1] as $row){
-         $uanguser = $row->uang;
+         $data[2] = DB::table('modals')
+                    ->where('nama', $request->uang)
+                    ->get();
+
+         foreach($data[1] as $row){ //uang orang yang mau diambil
          $modaluser = $row->harga;
          }
+
+         foreach($data[2] as $row){ //uang orang yang ngambil
+            $uanguser = $row->uang;
+            }
            
          foreach($data[0] as $row){
-            $untung = $row->untung;
+            $untung = round($row->untung);
             $pulangmodal = $row->pulang;
             }
 
@@ -87,11 +95,16 @@ class AmbiluangController extends Controller
                         'pulang' => $pulangmodal,
                       ]);
 
-                      Modal::where('nama', $request->nama)
+                      Modal::where('nama', $request->uang)
                       ->update([
                            'uang' => $uanguser,
-                            'harga' => $modaluser,
                           ]);
+
+                          Modal::where('nama', $request->nama)
+                          ->update([
+                                'harga' => $modaluser,
+                              ]);
+    
 
                     Ambiluang::create([
                         'nama' => $request->nama,
@@ -118,7 +131,7 @@ class AmbiluangController extends Controller
                           'untung' => $untung,
                         ]);
 
-                     Modal::where('nama', $request->nama)
+                     Modal::where('nama', $request->uang)
                      ->update([
                         'uang' => $uanguser,
                     ]);
@@ -131,7 +144,6 @@ class AmbiluangController extends Controller
 
                     return redirect('/ambiluang');
                 }else{
-                   // dd('asd2');
                     return redirect()->route('ambilcreate')->with('surat', 'Untung Terbatas');
                 }
             }

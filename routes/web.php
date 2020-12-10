@@ -51,6 +51,7 @@ Route::get('/admin/terjual/', [NamapaketController::class, 'create']);
 Route::get('/admin/terjual/{id}', [NamapaketController::class, 'show']);
 Route::post('/admin/terjual', [NamapaketController::class, 'store']);
 Route::post('/admin/jual/selesai', [NamapaketController::class, 'selesai']);
+Route::delete('/admin/jual/delete/{namapaket}', [NamapaketController::class, 'destroy']);
 
 //terjual
 Route::post('/admin/jual/', [TerjualController::class, 'store']);

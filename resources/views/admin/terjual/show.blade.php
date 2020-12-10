@@ -35,10 +35,11 @@
       <td>{{number_format($row->untung)}}</td>
       <?php
       $id_jual = $row->id;
+      $status = $row->status;
       ?>
       <td>
-      @if(session('level'))
-      <form action="/admin/galeri/" method="post" class="d-inline">
+      @if($row->modal == 0)
+      <form action="/admin/jual/delete/{{$row->id}}" method="post" class="d-inline">
     @method('delete')
     @csrf
     <button type="submit" class="btn btn-danger">delete</button>
@@ -46,18 +47,26 @@
     @endif
       </td>
       <td>
+      @if($row->status != 'Selesai' )
       <form action="/admin/jual/selesai" method="post" class="d-inline">
     @csrf
     <input type="hidden" value="{{$id_jual}}"  id="id_jual" name="id_jual">
     <input type="hidden" value="{{$row->nama}}"  id="nama" name="nama">
     <button type="submit" class="btn btn-primary">Selesai</button>
     </form>
+    @endif
       </td>
     </tr>
   </tbody>
   @endforeach
 
+  @if (session('surat'))
+        <div class="alert alert-danger">
+          {{session('surat')}}
+        </div>
+        @endif
 
+        @if($status != 'Selesai')
   <table class="table">
   <tbody>
   <table class="table">
@@ -74,11 +83,7 @@
 
   <tbody>
     <tr>
-    @if (session('surat'))
-        <div class="alert alert-danger">
-          {{session('surat')}}
-        </div>
-        @endif
+   
       <form action="/admin/jual/" method="post" class="d-inline">
     @csrf
     <td width="25%"><select value="{{old('jenis')}}" class="form-control @error('jenis') is-invalid @enderror" id="jenis" placeholder="masukan jenis" name="jenis">
@@ -106,7 +111,7 @@
     </form>
     </tr>
   </tbody>
-
+  @endif
   <tbody>
   <table class="table">
   <thead>
@@ -124,12 +129,14 @@
       <td>{{$row->stock}}</td>
       <td>{{number_format($row->harga)}}</td>
       <td>
+      @if($status != 'Selesai' )
       <form action="/admin/jual/{{$row->id}}" method="post" class="d-inline">
     @method('delete')
     @csrf
     <input type="hidden" value="{{$row->id_jual}}"  id="id_jual" name="id_jual">
     <button type="submit" class="btn btn-danger">delete</button>
     </form>
+    @endif
       </td>
     </tr>
   </tbody>
@@ -150,12 +157,14 @@
       <td>{{$row->deskripsi}}</td>
       <td>{{number_format($row->harga)}}</td>
       <td>
+      @if($status != 'Selesai' )
       <form action="/admin/biayatambah/delete/{{$row->id}}" method="post" class="d-inline">
     @method('delete')
     @csrf
     <input type="hidden" value="{{$row->id_jual}}"  id="id_jual" name="id_jual">
     <button type="submit" class="btn btn-danger">delete</button>
     </form>
+    @endif
       </td>
     </tr>
   </tbody>
