@@ -12,6 +12,14 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
+  <style>
+    body{
+      background-image: url('/img/bg.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+    }
+  </style>
 </head>
 
 <body>

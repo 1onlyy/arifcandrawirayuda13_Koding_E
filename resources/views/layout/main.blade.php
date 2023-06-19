@@ -7,8 +7,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
       <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
+      {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"> --}}
+<link rel="stylesheet" href="/css/style.css">
       <script src="{{ asset('js/script.js') }}"></script>
       <title>@yield('title')</title>
 </head>
@@ -22,53 +22,65 @@
       .nav-item {
             text-align: center;
       }
+      body{
+            background-image: url('/img/bg.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+      }
 </style>
 
 <body>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">Pembukuan</a>
-                  <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav  ml-auto">
-                              <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/') }}">Home</a>
-                              </li>
-                              <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/belibarang') }}">BeliBarang</a>
-                              </li>
-                              <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/terjual') }}">Terjual</a>
-                              </li>
-                              <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/ambiluang') }}">AmbilUang</a>
-                              </li>
-                              <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/produkgagal') }}">PrudukGagal</a>
-                              </li>
-                              <!-- <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/galeri') }}">Galeri</a>
-                              </li>
-                              <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/contact') }}">Contact</a>
-                              </li> -->
-                              <!-- <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/admin/register') }}">Register</a>
-                              </li> -->
-                              <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/admin/logout') }}">Logout</a>
-                              </li>
-                        </ul>
+      <div class="row">
+            <div class="col-3">
+                  <div class="ml-5 mt-5 mr-2">
+                        <img src="/img/logo.png" width="200" alt="" style="position: absolute;">
                   </div>
             </div>
-      </nav>
+            <div class="col-8">
+                  <nav class="mt-5 mx-3 navbar navbar-expand-lg navbar-light bg-warning text-white rounded-pill">
+                        <div class="container">
+                              {{-- <div class="collapse navbar-collapse" id="navbarNav"> --}}
+                                    <div class=" row justify-content-between text-white m-auto" style="border-radius: 25px">
+                                          
+                                                <a style="width: 300px;font-weight: bold" class="m-auto text-center text-dark fw-bold nav-link py-2 d-block col-2 text-white" href="{{ url('/') }}">Home</a>
+                                          
+                                          
+                                                <a style="width: 300px;font-weight: bold" class="m-auto text-center text-dark fw-bold nav-link py-2 d-block col-2 text-white" href="{{ url('/belibarang') }}">Beli Barang</a>
+                                          
+                                          
+                                                <a style="width: 300px;font-weight: bold" class="m-auto text-center text-dark fw-bold nav-link py-2 d-block col-2 text-white" href="{{ url('/terjual') }}">Terjual</a>
+                                          
+                                          
+                                                <a style="width: 300px;font-weight: bold" class="m-auto text-center text-dark fw-bold nav-link py-2 d-block col-2 text-white" href="{{ url('/ambiluang') }}">Ambil Uang</a>
+                                          
+                                          
+                                                <a style="width: 300px;font-weight: bold" class="m-auto text-center text-dark fw-bold nav-link py-2 d-block col-2 text-white" href="{{ url('/produkgagal') }}">Produk Gagal</a>
+                                          
+                                          <!-- 
+                                                <a style="width: 300px;font-weight: bold" class="m-auto text-center text-dark fw-bold nav-link py-2 d-block col-2 text-white" href="{{ url('/galeri') }}">Galeri</a>
+                                          
+                                          
+                                                <a style="width: 300px;font-weight: bold" class="m-auto text-center text-dark fw-bold nav-link py-2 d-block col-2 text-white" href="{{ url('/contact') }}">Contact</a>
+                                           -->
+                                          <!-- 
+                                                <a style="width: 300px;font-weight: bold" class="m-auto text-center text-dark fw-bold nav-link py-2 d-block col-2 text-white" href="{{ url('/admin/register') }}">Register</a>
+                                           -->
+                                    </div>
+                              {{-- </div> --}}
+                        </div>
+                  </nav>
+            </div>
+      </div>
+
+      <a style="width: 150px;font-weight: bold;position: fixed;bottom: 25px" class="btn btn-danger ml-5 py-3 rounded-pill" href="{{ url('/admin/logout') }}">Logout</a>
+                                          
+
       @yield('container')
 
       <!-- Optional JavaScript; choose one of the two! -->
 
-      <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+      <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) --> 
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 

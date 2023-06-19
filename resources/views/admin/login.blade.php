@@ -2,7 +2,10 @@
 
 @section('content')
 
-<div class="card card-primary">
+<div class="mx-auto d-flex justify-content-center">
+  <img src="/img/logo.png" width="200" style="text-align: center" alt="">
+</div>
+<div class="card card-primary ">
   <div class="card-header"><h4>Login Admin</h4></div>
 
   <div class="card-body">
@@ -60,7 +63,7 @@
     </form>
   </div>
 </div>
-<div class="mt-5 text-muted text-center">
+<div class="mt-5 text-center text-white">
   Don't have an account? <a href="/admin/register">Create One</a>
 </div>
 @endsection

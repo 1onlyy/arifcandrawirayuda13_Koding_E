@@ -3,7 +3,7 @@
 @section('title','Pembukuan')
 
 @section('container')
-<div class="contianer">
+<div class="container">
   <div class="row">
     <div class="col-sm-5 ml-auto mr-auto">
       <h1 style="text-align: center;">Produk Gagal</h1>
